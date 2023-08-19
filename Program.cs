@@ -10,10 +10,12 @@ public interface IPdfPrintable : IPrintable
     void PrintPdf();
 }
 
+
 public interface IWordPrintable : IPrintable
 {
     void PrintWord();
 }
+
 
 
 // Clases que implementan las interfaces según el formato de documento
@@ -58,7 +60,7 @@ class Program
     {
         IPdfPrintable pdfDocument = new PdfDocument();
         IWordPrintable wordDocument = new WordDocument();
-
+        
         while (true)
             {
                 Console.WriteLine("Selecciona el tipo de archivo a imprimir:");
