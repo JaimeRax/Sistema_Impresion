@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 
 // Interfaces segregadas para diferentes formatos de documentos
 public interface IPrintable
@@ -31,7 +31,9 @@ public class PdfDocument : IPdfPrintable
 
     public void PrintPdf()
     {
+        Console.WriteLine();
         Console.WriteLine("Imprimiendo documento PDF...");
+        Console.WriteLine();
     }
 }
 
@@ -45,7 +47,9 @@ public class WordDocument : IWordPrintable
 
     public void PrintWord()
     {
+        Console.WriteLine();
         Console.WriteLine("Imprimiendo documento Word...");
+        Console.WriteLine();
     }
 }
 public class ExcelDocument : IExcelPrintable
@@ -57,7 +61,9 @@ public class ExcelDocument : IExcelPrintable
 
     public void PrintExcel()
     {
+        Console.WriteLine();
         Console.WriteLine("Imprimiendo documento Excel...");
+        Console.WriteLine();
     }
 }
 
@@ -77,6 +83,8 @@ class Program
         IWordPrintable wordDocument = new WordDocument();
         IExcelPrintable excelDocument = new ExcelDocument();
         
+        PrintClient printClient = new PrintClient();
+
         while (true)
             {
                 Console.WriteLine("Selecciona el tipo de archivo a imprimir:");
@@ -90,14 +98,15 @@ class Program
                 switch (opcion)
                 {
                     case "1":
-                        PrintClient printClient = new PrintClient();
+                       // PrintClient printClient = new PrintClient();
                         printClient.PrintDocument(pdfDocument);
                         break;
                     case "2":
-                        PrintClient printClient = new PrintClient();
+                       // PrintClient printClient = new PrintClient();
                         printClient.PrintDocument(wordDocument);
+                        break;
                     case "3":
-                        PrintClient printClient = new PrintClient();
+                       // PrintClient printClient = new PrintClient();
                         printClient.PrintDocument(excelDocument);
                        
                         break;
