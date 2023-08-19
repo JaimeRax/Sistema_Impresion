@@ -5,36 +5,24 @@ public interface IPrintable
 {
     void Print();
 }
-
-
-
-/*
-
-    Crear interfaz para cada tipo de archico
-
-*/
-
-
-
-
+public interface IPdfPrintable : IPrintable
+{
+    void PrintPdf();
+}
 
 // Clases que implementan las interfaces según el formato de documento
+public class PdfDocument : IPdfPrintable
+{
+    public void Print()
+    {
+        PrintPdf();
+    }
 
-
-
-/*
-
-    Crear clase para implementar las interfaces
-
-*/
-
-
-
-
-
-
-
-
+    public void PrintPdf()
+    {
+        Console.WriteLine("Imprimiendo documento PDF...");
+    }
+}
 
 // Cliente que utiliza el sistema de impresión
 public class PrintClient
@@ -48,9 +36,8 @@ class Program
 {
     static void Main(string[] args)
     {
-        /* 
-            Crear una instancia hacia su interfaz
-        */
+     IPdfPrintable pdfDocument = new PdfDocument()
+               
         while (true)
             {
                 Console.WriteLine("Selecciona el tipo de archivo a imprimir:");
@@ -64,10 +51,8 @@ class Program
                 switch (opcion)
                 {
                     case "1":
-                        /* llamar a la clase PrintClient ya creada e implementar la clase que crearon ustedes., ejemplo:
-
-                         PrintClient printClient = new PrintClient();
-                         printClient.PrintDocument(pdfDocument); */
+                        PrintClient printClient = new PrintClient();
+                        printClient.PrintDocument(pdfDocument);
                         break;
                     case "2":
                         ImprimirWord();
