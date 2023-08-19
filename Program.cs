@@ -13,6 +13,10 @@ public interface IPrintable
     Crear interfaz para cada tipo de archico
 
 */
+public interface IWordPrintable : IPrintable
+{
+    void PrintWord();
+}
 
 
 
@@ -22,12 +26,18 @@ public interface IPrintable
 
 
 
-/*
+public class WordDocument : IWordPrintable
+{
+    public void Print()
+    {
+        PrintWord();
+    }
 
-    Crear clase para implementar las interfaces
-
-*/
-
+    public void PrintWord()
+    {
+        Console.WriteLine("Imprimiendo documento Word...");
+    }
+}
 
 
 
@@ -48,9 +58,8 @@ class Program
 {
     static void Main(string[] args)
     {
-        /* 
-            Crear una instancia hacia su interfaz
-        */
+        IWordPrintable wordDocument = new WordDocument();
+
         while (true)
             {
                 Console.WriteLine("Selecciona el tipo de archivo a imprimir:");
@@ -70,8 +79,8 @@ class Program
                          printClient.PrintDocument(pdfDocument); */
                         break;
                     case "2":
-                        ImprimirWord();
-                        break;
+                        PrintClient printClient = new PrintClient();
+                        printClient.PrintDocument(wordDocument);
                     case "3":
                         ImprimirExcel();
                         break;
