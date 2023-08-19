@@ -15,7 +15,10 @@ public interface IWordPrintable : IPrintable
 {
     void PrintWord();
 }
-
+public interface IExcelPrintable : IPrintable
+{
+    void PrintExcel();
+}
 
 
 // Clases que implementan las interfaces según el formato de documento
@@ -45,6 +48,18 @@ public class WordDocument : IWordPrintable
         Console.WriteLine("Imprimiendo documento Word...");
     }
 }
+public class ExcelDocument : IExcelPrintable
+{
+    public void Print()
+    {
+        PrintExcel();
+    }
+
+    public void PrintExcel()
+    {
+        Console.WriteLine("Imprimiendo documento Excel...");
+    }
+}
 
 // Cliente que utiliza el sistema de impresión
 public class PrintClient
@@ -60,6 +75,7 @@ class Program
     {
         IPdfPrintable pdfDocument = new PdfDocument();
         IWordPrintable wordDocument = new WordDocument();
+        IExcelPrintable excelDocument = new ExcelDocument();
         
         while (true)
             {
@@ -81,7 +97,9 @@ class Program
                         PrintClient printClient = new PrintClient();
                         printClient.PrintDocument(wordDocument);
                     case "3":
-                        ImprimirExcel();
+                        PrintClient printClient = new PrintClient();
+                        printClient.PrintDocument(excelDocument);
+                       
                         break;
                     case "4":
                         return;
